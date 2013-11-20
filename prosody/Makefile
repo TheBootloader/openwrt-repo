@@ -63,6 +63,7 @@ MAKE_FLAGS += \
 define Package/prosody/install
 	$(INSTALL_DIR) $(1)/etc/init.d
 	$(INSTALL_BIN) ./files/prosody.init $(1)/etc/init.d/prosody
+	$(INSTALL_BIN) ./files/mod_smacks.lua $(1)/usr/lib/prosody/modules/
 	$(INSTALL_DIR) $(1)/etc/prosody
 	$(INSTALL_CONF) $(PKG_INSTALL_DIR)/etc/prosody/prosody.cfg.lua $(1)/etc/prosody/
 	$(INSTALL_DIR) $(1)/etc/prosody/certs
