@@ -1,0 +1,13 @@
+This is an OpenWrt package feed.
+
+To use these packages, do the following:
+
+1. Add the following line at the top of your feeds.conf or feeds.conf.default in your OpenWrt buildroot:
+  src-git bootrepo git://github.com/TheBootloader/openwrt-repo.git
+Note: This bootrepo-feed must be inserted at least one line before the packages-feed, if you want updated versions of already-existing packages.
+
+2. Run
+  ./scripts/feeds uninstall -a
+  ./scripts/feeds update -a
+  ./scripts/feeds install -a
+Note: This will uninstall all packages (not delete!), update the all feeds, and then (re)install all packages. This step is required to properly install packages from my bootrepo-feed, which also exist in the packages-feed.
