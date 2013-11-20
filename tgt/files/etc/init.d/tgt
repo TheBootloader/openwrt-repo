@@ -10,6 +10,7 @@ EXTRA_HELP="	show	Show current configuration of tgtd
 
 NAME=tgt
 EXEC=/usr/sbin/${NAME}d
+THREADS=4
 
 tgtadm="/usr/sbin/tgtadm --lld iscsi"
 
@@ -88,7 +89,7 @@ configure() {
 }
 
 start() {
-	service_start $EXEC || return 1
+	service_start $EXEC -t $THREADS || return 1
 	configure || { stop; exit 1; }
 }
 
