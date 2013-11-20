@@ -135,6 +135,19 @@ end, 100);
 
 module:hook_stanza(xmlns_sm, "enabled", function (session, stanza)
 	module:log("debug", "Enabling stream management");
+
+
+	if session.smacks then
+		module:log("debug", "Stream management was already enabled!");
+		return true;
+	end
+	if not session.resource then
+		module:log("debug", "Attempted to enable stream management before resource binding");
+		session.send(st.stanza("failed", { xmlns = xmlns_sm }):tag("unexpected-request", { xmlns = xmlns_errors}));
+		return true;
+	end
+
+
 	session.smacks = true;
 	
 	wrap_session(session);
