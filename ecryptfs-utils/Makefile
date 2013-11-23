@@ -25,6 +25,7 @@ define Package/ecryptfs-utils
   CATEGORY:=Utilities
   TITLE:=eCryptfs utilities
   URL:=http://ecryptfs-utils.sourceforge.net/
+  DEPENDS:=+libc +gettext +keyutils +libgpgme +libgpg-error +libpam
 endef
 
 define Package/ecryptfs-utils/description
