@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2012 OpenWrt.org
+# Copyright (C) 2012-2013 OpenWrt.org
 #
 # This is free software, licensed under the GNU General Public License v2.
 # See /LICENSE for more information.
@@ -7,16 +7,16 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=tgt
-PKG_VERSION:=1.0.30
-PKG_RELEASE:=2
-GIT_SHORT_REV:=9dc30be
+PKG_VERSION:=1.0.42.1
+PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://github.com/fujita/tgt/tarball/v$(PKG_VERSION)
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_URL:=git://github.com/fujita/tgt.git
+PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
+PKG_SOURCE_VERSION:=03c6dcf96826b1b83bd31be8f59b4c951c747541
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-$(PKG_SOURCE_VERSION).tar.gz
 
-#PKG_MD5SUM:=
-
-PKG_BUILD_DIR:=$(BUILD_DIR)/fujita-$(PKG_NAME)-$(GIT_SHORT_REV)
+PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_SOURCE_SUBDIR)
 
 include $(INCLUDE_DIR)/package.mk
 
@@ -36,7 +36,7 @@ Note that if you are interested in only iSCSI (probably you are), you need only 
 endef
 
 define Build/Compile
-	CC=$(TARGET_CC) $(MAKE) -C $(PKG_BUILD_DIR) \
+		CC=$(TARGET_CC) $(MAKE) -C $(PKG_BUILD_DIR) \
 		DESTDIR="$(PKG_INSTALL_DIR)" \
 		LD="$(TARGET_CC)" \
 		install-programs
