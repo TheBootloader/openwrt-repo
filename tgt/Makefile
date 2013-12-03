@@ -8,7 +8,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=tgt
 PKG_VERSION:=1.0.42.1
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=git://github.com/fujita/tgt.git
@@ -47,9 +47,11 @@ define Package/tgt/conffiles
 endef
 
 define Package/tgt/install
-	$(INSTALL_DIR) $(1)/
+	$(INSTALL_DIR) $(1)/etc/config
+	$(INSTALL_DIR) $(1)/etc/init.d
 	$(INSTALL_DIR) $(1)/usr/sbin
-	$(CP) ./files/* $(1)/
+	$(CP) ./files/etc/config/* $(1)/etc/config/
+	$(INSTALL_BIN) ./files/etc/init.d/* $(1)/etc/init.d/
 	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/sbin/tgtd $(1)/usr/sbin/
 	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/sbin/tgtadm $(1)/usr/sbin/
 endef
