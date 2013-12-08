@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=ecryptfs-utils
 PKG_VERSION:=103
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PKG_SOURCE:=$(PKG_NAME)_$(PKG_VERSION).orig.tar.gz
 PKG_SOURCE_URL:=https://launchpad.net/ecryptfs/trunk/$(PKG_VERSION)/+download/
@@ -21,15 +21,16 @@ PKG_INSTALL:=1
 include $(INCLUDE_DIR)/package.mk
 
 define Package/ecryptfs-utils
-  SECTION:=utils
-  CATEGORY:=Utilities
-  TITLE:=eCryptfs utilities
-  URL:=http://ecryptfs-utils.sourceforge.net/
-  DEPENDS:=+libc +gettext +keyutils +libgpgme +libgpg-error +libpam
+	SECTION:=utils
+	CATEGORY:=Utilities
+	SUBMENU:=Filesystem
+	TITLE:=eCryptfs utilities
+	URL:=http://ecryptfs-utils.sourceforge.net/
+	DEPENDS:=+kmod-fs-ecryptfs +libcc +keyutils +libgpgme +libgpg-error +libpam @BROKEN
 endef
 
 define Package/ecryptfs-utils/description
-  eCryptfs utilities
+	eCryptfs utilities
 endef
 
 

@@ -1,4 +1,3 @@
-
 #
 # Copyright (C) 2013 OpenWrt.org
 #
@@ -14,15 +13,15 @@ PKG_RELEASE:=1
 include $(INCLUDE_DIR)/package.mk
 
 define KernelPackage/fs-ecryptfs
-  SUBMENU:=Filesystems
-  TITLE:=eCrypt filesystem support
-  KCONFIG:=CONFIG_ECRYPT_FS
-  FILES:=$(LINUX_DIR)/fs/ecryptfs/ecryptfs.ko
-  AUTOLOAD:=$(call AutoLoad,30,ecryptfs,1)
+	SUBMENU:=Filesystems
+	TITLE:=eCrypt filesystem support
+	KCONFIG:=CONFIG_ECRYPT_FS
+	FILES:=$(LINUX_DIR)/fs/ecryptfs/ecryptfs.ko
+	AUTOLOAD:=$(call AutoLoad,30,ecryptfs,1)
 endef
 
 define KernelPackage/fs-ecryptfs/description
-  Kernel module for eCrypt support
+	Kernel module for eCrypt support
 endef
 
 define Build/Prepare
