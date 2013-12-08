@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=sshfs
 PKG_VERSION:=2.4
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PKG_SOURCE:=$(PKG_NAME)-fuse-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=@SF/fuse
@@ -22,7 +22,7 @@ include $(INCLUDE_DIR)/nls.mk
 
 define Package/sshfs
   TITLE:=SSHFS
-  DEPENDS:=+libfuse +fuse-utils +glib2 +libpthread
+  DEPENDS:=+libfuse +fuse-utils +glib2 +libpthread +openssh-client
   SECTION:=net
   CATEGORY:=Network
   SUBMENU:=Filesystem
