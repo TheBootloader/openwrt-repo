@@ -750,29 +750,29 @@ config BUSYBOX_CONFIG_PREFIX
 
 endmenu
 
-source package/utils/busybox/config/libbb/Config.in
+source package/feeds/bootrepo/busybox/config/libbb/Config.in
 
 endmenu
 
 comment "Applets"
 
-source package/utils/busybox/config/archival/Config.in
-source package/utils/busybox/config/coreutils/Config.in
-source package/utils/busybox/config/console-tools/Config.in
-source package/utils/busybox/config/debianutils/Config.in
-source package/utils/busybox/config/editors/Config.in
-source package/utils/busybox/config/findutils/Config.in
-source package/utils/busybox/config/init/Config.in
-source package/utils/busybox/config/loginutils/Config.in
-source package/utils/busybox/config/e2fsprogs/Config.in
-source package/utils/busybox/config/modutils/Config.in
-source package/utils/busybox/config/util-linux/Config.in
-source package/utils/busybox/config/miscutils/Config.in
-source package/utils/busybox/config/networking/Config.in
-source package/utils/busybox/config/printutils/Config.in
-source package/utils/busybox/config/mailutils/Config.in
-source package/utils/busybox/config/procps/Config.in
-source package/utils/busybox/config/runit/Config.in
-source package/utils/busybox/config/selinux/Config.in
-source package/utils/busybox/config/shell/Config.in
-source package/utils/busybox/config/sysklogd/Config.in
+source package/feeds/bootrepo/busybox/config/archival/Config.in
+source package/feeds/bootrepo/busybox/config/coreutils/Config.in
+source package/feeds/bootrepo/busybox/config/console-tools/Config.in
+source package/feeds/bootrepo/busybox/config/debianutils/Config.in
+source package/feeds/bootrepo/busybox/config/editors/Config.in
+source package/feeds/bootrepo/busybox/config/findutils/Config.in
+source package/feeds/bootrepo/busybox/config/init/Config.in
+source package/feeds/bootrepo/busybox/config/loginutils/Config.in
+source package/feeds/bootrepo/busybox/config/e2fsprogs/Config.in
+source package/feeds/bootrepo/busybox/config/modutils/Config.in
+source package/feeds/bootrepo/busybox/config/util-linux/Config.in
+source package/feeds/bootrepo/busybox/config/miscutils/Config.in
+source package/feeds/bootrepo/busybox/config/networking/Config.in
+source package/feeds/bootrepo/busybox/config/printutils/Config.in
+source package/feeds/bootrepo/busybox/config/mailutils/Config.in
+source package/feeds/bootrepo/busybox/config/procps/Config.in
+source package/feeds/bootrepo/busybox/config/runit/Config.in
+source package/feeds/bootrepo/busybox/config/selinux/Config.in
+source package/feeds/bootrepo/busybox/config/shell/Config.in
+source package/feeds/bootrepo/busybox/config/sysklogd/Config.in
