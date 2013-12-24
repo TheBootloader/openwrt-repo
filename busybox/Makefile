@@ -59,6 +59,12 @@ define Package/busybox/config
 	source "$(SOURCE)/Config.in"
 endef
 
+ENV_CONFIG:=$(wildcard $(TOPDIR)/env/busybox-config)
+ifneq ($(ENV_CONFIG),)
+  CONFIG_TEMPLATE:=+ $(CONFIG_TEMPLATE) $(ENV_CONFIG)
+  STAMP_CONFIGURED:=$(STAMP_CONFIGURED)_$(shell $(SH_FUNC) md5s < $(ENV_CONFIG))
+endif
+
 define Build/Configure
 	rm -f $(PKG_BUILD_DIR)/.configured*
 	grep 'CONFIG_BUSYBOX_' $(TOPDIR)/.config | sed -e "s,\\(# \)\\?CONFIG_BUSYBOX_\\(.*\\),\\1\\2,g" > $(PKG_BUILD_DIR)/.config
