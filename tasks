@@ -1,0 +1,71 @@
+#!/bin/bash
+
+cd openwrt
+
+echo " "
+echo " ---------- "
+echo " Welcome to the simple OpenWrt task system. "
+echo " https://github.com/TheBootloader/openwrt-repo "
+echo " ---------- "
+while [ true ]; do
+	echo " "
+	echo " Possible inputs: "
+	echo "	1 - Clean everything (dirclean) "
+	echo "	2 - Update SVN/GIT and packages, and run defconfig "
+	echo "	3 - Run menuconfig "
+	echo "	4 - Run kernel_menuconfig "
+	echo "	5 - Build OpenWrt image "
+	#echo "	6 - Changing active configuration "
+	echo " (Example: Type \"35\" and press enter to run menuconfig and then build the OpenWrt image.) "
+	echo " "
+	echo -n " What do you want to do? (integer) "
+
+	read input
+	char=-1
+	while [ $char ]; do
+		case $char in
+			-1)	echo " "
+				echo "Running tasks:"
+				echo "----------"
+				;;
+
+			1)	echo "Cleaning..."
+				make dirclean
+				;;
+
+			2)	echo "Updating..."
+				svn up
+				git pull
+				./scripts/feeds update -a
+				./scripts/feeds install -a
+				make defconfig
+				;;
+
+			3)	echo "Running menuconfig..."
+				make menuconfig
+				;;
+
+			4)	echo "Running kernel_menuconfig..."
+				make kernel_menuconfig
+				;;
+
+			5)	echo "Building OpenWrt image..."
+				ionice -c 3 nice -n 19 make world -j 5
+				;;
+
+			6)	echo "Not yet implemented."
+				;;
+
+			*)	echo "Invalid input: $char"
+				cd ..
+				exit
+				;;
+		esac
+		char=$(echo $input | head -c 1)
+		input=${input:1}
+	done
+	echo "----------"
+	sleep 1
+done
+
+cd ..
