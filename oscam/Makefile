@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2007-2013 OpenWrt.org
+# Copyright (C) 2007-2014 OpenWrt.org
 #
 # This is free software, licensed under the GNU General Public License v2.
 # See /LICENSE for more information.
@@ -8,8 +8,8 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=oscam
-PKG_REV:=9077
-PKG_VER:=2013-12-08
+PKG_REV:=9210
+PKG_VER:=2013-01-08
 PKG_VERSION:=$(PKG_VER)-$(PKG_REV)
 PKG_RELEASE:=1
 
