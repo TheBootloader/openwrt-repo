@@ -14,8 +14,8 @@ while [ true ]; do
 	echo "	2 - Update SVN/GIT and packages, and run defconfig "
 	echo "	3 - Run menuconfig "
 	echo "	4 - Run kernel_menuconfig "
-	echo "	5 - Build OpenWrt image "
-	#echo "	6 - Changing active configuration "
+	echo "	5 - Build OpenWrt image (Multi-core) "
+	echo "	6 - Build OpenWrt image (Single-core, debug (V=99)) "
 	echo " (Example: Type \"35\" and press enter to run menuconfig and then build the OpenWrt image.) "
 	echo " "
 	echo -n " What do you want to do? (integer) "
@@ -53,7 +53,8 @@ while [ true ]; do
 				ionice -c 3 nice -n 19 make world -j 5
 				;;
 
-			6)	echo "Not yet implemented."
+			6)	echo "Building OpenWrt image (debug)..."
+				ionice -c 3 nice -n 19 make world V=99
 				;;
 
 			*)	echo "Invalid input: $char"
