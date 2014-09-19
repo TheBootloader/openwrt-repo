@@ -34,8 +34,8 @@ while [ true ]; do
 				;;
 
 			2)	echo "Updating..."
-				svn up
-				git pull
+				[ -d .svn ] && svn up
+				[ -d .git ] && git pull
 				./scripts/feeds update -a
 				./scripts/feeds install -a
 				make defconfig
