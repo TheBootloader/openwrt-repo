@@ -34,27 +34,27 @@ while [ true ]; do
 				;;
 
 			2)	echo "Updating..."
-				[ -d .svn ] && svn up
-				[ -d .git ] && git pull
+				[ -d .svn ] && (svn up || exit)
+				[ -d .git ] && (git pull || exit)
 				./scripts/feeds update -a
 				./scripts/feeds install -a
 				make defconfig
 				;;
 
 			3)	echo "Running menuconfig..."
-				make menuconfig
+				ionice -c 3 nice -n 18 make menuconfig -j 5
 				;;
 
 			4)	echo "Running kernel_menuconfig..."
-				make kernel_menuconfig
+				ionice -c 3 nice -n 18 make kernel_menuconfig -j 5
 				;;
 
 			5)	echo "Building OpenWrt image..."
-				ionice -c 3 nice -n 19 make world -j 5
+				ionice -c 3 nice -n 18 make world -j 5
 				;;
 
 			6)	echo "Building OpenWrt image (debug)..."
-				ionice -c 3 nice -n 19 make world V=99
+				ionice -c 3 nice -n 18 make world V=99
 				;;
 
 			*)	echo "Invalid input: $char"
